@@ -1,6 +1,6 @@
 {
   "name": "easy-barcode-scanner",
-  "version": "10.2.1007",
+  "version": "10.2.1008",
   "description": "A wrapper for dynamsoft-barcode-reader-javascript. Easier to use.",
   "main": "./dist/easy-barcode-scanner.js",
   "module": "./dist/easy-barcode-scanner.esm.js",
