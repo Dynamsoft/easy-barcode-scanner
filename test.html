@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+</head>
+<body>
+<button id="btn1">test create scanner</button><br>
+<button id="btn2">test One function directly scanning</button><br>
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.2.1000/dist/dbr.bundle.js"></script>
+<script src="./dist/easy-barcode-scanner.js" data-license=""></script>
+<script>
+  let pScanner, scanner;
+  document.getElementById('btn1').addEventListener('click',async()=>{
+    scanner = await (pScanner || (pScanner = EasyBarcodeScanner.createInstance()));
+    scanner.onUniqueRead = (txt) => { console.log(txt); };
+    await scanner.open();
+  });
+
+  document.getElementById('btn2').addEventListener('click',async()=>{
+    let txt = await EasyBarcodeScanner.scan('./easy-barcode-scanner.ui.html');
+    alert(txt);
+  });
+</script>
+
+</body>
+</html>

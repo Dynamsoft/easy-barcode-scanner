@@ -1,0 +1,57 @@
+{
+  "name": "easy-barcode-scanner",
+  "version": "10.2.1007",
+  "description": "A wrapper for dynamsoft-barcode-reader-javascript. Easier to use.",
+  "main": "./dist/easy-barcode-scanner.js",
+  "module": "./dist/easy-barcode-scanner.esm.js",
+  "files": [
+    "/dist",
+    "/easy-barcode-scanner.ui.html",
+    "/LICENSE"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": {
+        "require": "./dist/types/index.d.cts",
+        "import": "./dist/types/index.d.ts"
+      },
+      "import": "./dist/easy-barcode-scanner.esm.js",
+      "require": "./dist/easy-barcode-scanner.js"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "build:production": "rollup -c --environment BUILD:production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dynamsoft/easy-barcode-scanner.git"
+  },
+  "keywords": [
+    "barcode",
+    "js",
+    "javascript"
+  ],
+  "author": "Dynamsoft",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/Dynamsoft/easy-barcode-scanner/issues"
+  },
+  "homepage": "https://www.dynamsoft.com",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.11.6",
+    "rollup": "^4.9.5",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dynamsoft-barcode-reader-bundle": "10.2.1000"
+  }
+}

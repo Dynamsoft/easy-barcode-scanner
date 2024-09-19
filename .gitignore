@@ -1,0 +1,5 @@
+dist/*
+!dist/easy-barcode-scanner.js
+node_modules
+.npmrc
+package-lock.json
