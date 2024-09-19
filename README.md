@@ -54,7 +54,7 @@ You can also create your own scanner instance to have more control over the enti
 </script>
 ```
 
-## How to use it in frameworks
+## How to use it in frameworks like Angular, React, and Vue
 
 To integrate Easy Barcode Scanner into your framework, follow these steps:
 
