@@ -21,7 +21,7 @@ The simplest way to use Easy Barcode Scanner requires only one line code to crea
 ```
 [Source Code >>](https://github.com/Dynamsoft/easy-barcode-scanner/blob/main/index.html) | [Run in github.io >>](https://Dynamsoft.github.io/easy-barcode-scanner/index.html)
 
-![Out-of-the-box Scanning](./out-off-box-scan.png)
+![Out-of-the-box Scanning](./out-of-the-box-scan.png)
 
 ## Create Your Own Scanner for Further Control
 
@@ -67,6 +67,7 @@ npm i dynamsoft-barcode-reader-bundle@10.2.1000 -E
 2. Copy the `src/index.ts` file from the library into your project. Rename it as needed, for example: `[your-path]/easy-barcode-reader.ts.`
 
 **Example 1: Simple Out-of-the-box Scan**
+
 For a simpler implementation, this example shows how to scan with a single function:
 
 ```ts
@@ -86,6 +87,7 @@ async scan(){
 ```
 
 **Example 2: Setting Up a Scanner**
+
 This example demonstrates how to create a scanner instance and handle barcode readings efficiently:
 
 ```tsx
