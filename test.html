@@ -8,7 +8,7 @@
 <body>
 <button id="btn1">test create scanner</button><br>
 <button id="btn2">test One function directly scanning</button><br>
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.2.1000/dist/dbr.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.2002/dist/dbr.bundle.js"></script>
 <script src="./dist/easy-barcode-scanner.js" data-license=""></script>
 <script>
   let pScanner, scanner;
@@ -19,7 +19,7 @@
   });
 
   document.getElementById('btn2').addEventListener('click',async()=>{
-    let txt = await EasyBarcodeScanner.scan('./easy-barcode-scanner.ui.html');
+    let txt = await EasyBarcodeScanner.scan('./easy-barcode-scanner.ui.html?v=2');
     alert(txt);
   });
 </script>

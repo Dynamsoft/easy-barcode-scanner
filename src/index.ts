@@ -8,21 +8,13 @@ import 'dynamsoft-barcode-reader';
 
 
 //The following code uses the jsDelivr CDN, feel free to change it to your own location of these files
-Object.assign(CoreModule.engineResourcePaths, {
-  std: "https://cdn.jsdelivr.net/npm/dynamsoft-capture-vision-std@1.2.10/dist/",
-  dip: "https://cdn.jsdelivr.net/npm/dynamsoft-image-processing@2.2.30/dist/",
-  core: "https://cdn.jsdelivr.net/npm/dynamsoft-core@3.2.30/dist/",
-  license: "https://cdn.jsdelivr.net/npm/dynamsoft-license@3.2.21/dist/",
-  cvr: "https://cdn.jsdelivr.net/npm/dynamsoft-capture-vision-router@2.2.30/dist/",
-  dbr: "https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader@10.2.10/dist/",
-  dce: "https://cdn.jsdelivr.net/npm/dynamsoft-camera-enhancer@4.0.3/dist/"
-});
+CoreModule.engineResourcePaths.rootDirectory = 'https://cdn.jsdelivr.net/npm/';
 
 if(typeof document != undefined){
   let cs = document?.currentScript;
   if(cs){
     let license = cs.getAttribute('data-license');
-    if(license && LicenseManager.license != license){ LicenseManager.license = license; }
+    if(license){ LicenseManager.license = license; }
   }
 }
 
@@ -30,7 +22,7 @@ class EasyBarcodeScanner{
   // static initLicense = LicenseManager.initLicense.bind(this) as typeof LicenseManager.initLicense;
 
   static get license(){ return LicenseManager.license; }
-  static set license(value: string){ if(LicenseManager.license != value){ LicenseManager.license = value; } }
+  static set license(value: string){ LicenseManager.license = value; }
 
   /**
    * Presets: "ReadSingleBarcode", "ReadBarcodes_SpeedFirst"
@@ -65,7 +57,7 @@ class EasyBarcodeScanner{
   static createInstance(uiPath: string): Promise<EasyBarcodeScanner>;
   static createInstance(uiElement: HTMLElement): Promise<EasyBarcodeScanner>;
   static createInstance(ui?: string | HTMLElement): Promise<EasyBarcodeScanner>;
-  static async createInstance(ui?: string | HTMLElement){
+  static async createInstance(ui: string | HTMLElement = '@engineResourcePath/dce.mobile-native.ui.html'){
     let scanner = new EasyBarcodeScanner();
     try{
       let cvRouter = scanner._cvRouter = await CaptureVisionRouter.createInstance();
@@ -126,7 +118,8 @@ class EasyBarcodeScanner{
     DrawingStyleManager.updateDrawingStyle(3, value);
   }
 
-  getOriginalCanvas(){ return (this._cvRouter as any)._dsImage.toCanvas(); }
+  // TODO:
+  //getOriginalCanvas(){ return (this._cvRouter as any)._dsImage.toCanvas(); }
 
   async open(){
     if(!this._cameraEnhancer.isOpen()){
@@ -173,7 +166,7 @@ class EasyBarcodeScanner{
   dispose(){
     this._cvRouter?.dispose();
     let ui = this._view?.getUIElement();
-    this._cameraEnhancer?.dispose();
+    this._cameraEnhancer?.close(); // dispose has bug
     if(this._bAddToBodyWhenOpen){
       this._bAddToBodyWhenOpen = false;
       ui && document.body.removeChild(ui);
@@ -184,7 +177,7 @@ class EasyBarcodeScanner{
   static scan(uiPath: string): Promise<string>;
   static scan(uiElement: HTMLElement): Promise<string>;
   static scan(ui?: string | HTMLElement): Promise<string>;
-  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.2.1009/easy-barcode-scanner.ui.html'){
+  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/easy-barcode-scanner.ui.html'){
     return await new Promise(async(rs,rj)=>{
 
       //========================== init ============================
@@ -222,21 +215,15 @@ class EasyBarcodeScanner{
         await scanner.open();
       });
 
-      let btnResolution = shadowRoot.querySelector('.easyscanner-camera-and-resolution-btn');
-      btnResolution.addEventListener('pointerdown',async()=>{
-        if('720P' === btnResolution.textContent){
-          scanner._cameraEnhancer.setResolution({ width: 1920, height: 1080 });
-          btnResolution.textContent = '1080P';
-        }else{
-          scanner._cameraEnhancer.setResolution({ width: 1280, height: 720 });
-          btnResolution.textContent = '720P';
-        }
-      });
-
-      let isTorchOn = false; // torch has another style, you can check html part
+      // torch has another style, you can check html part
       shadowRoot.querySelector('.easyscanner-flash-btn').addEventListener('pointerdown', ()=>{
-        isTorchOn = !isTorchOn;
-        isTorchOn ? scanner.turnOnTorch() : scanner.turnOffTorch();
+        let els = shadowRoot.querySelectorAll('.dce-mn-torch > svg');
+        for(let el of els){
+          if('none'!=(el as HTMLElement).style.display){
+            el.dispatchEvent(new Event('pointerdown'));
+            break;
+          }
+        }
       });
 
       // easyscanner-more-settings-btn not used
@@ -290,6 +277,7 @@ class EasyBarcodeScanner{
       shadowRoot.append(btnClose);
 
       if('disabled' === scanner._cameraEnhancer.singleFrameMode){ scanner.pause(); }
+      scanner._cameraEnhancer.isTorchOn = false; // workaround `turnAutoTorch` try to turn on torch when camera paused
 
       let txtResult = await pChooseResult;
 
