@@ -13,7 +13,7 @@ The simplest way to use Easy Barcode Scanner requires only one line code to crea
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.2002/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2001/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   EasyBarcodeScanner.scan().then(txt=>alert(txt)).catch(ex=>alert(ex.message || ex));
@@ -31,7 +31,7 @@ You can also create your own scanner instance to have more control over the enti
 <div id="camera-view-container" style="height:90vh"></div>
 <button id="btn-scan">scan</button>
 <script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.2002/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2001/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   let pScanner, scanner;
@@ -127,7 +127,7 @@ beforeUnmount(){
 The built-in UIs are located in files like `xxx.ui.html`. You can copy `xxx.ui.html` into your project, modify it as needed, and pass its path to the `createInstance` or `scan` API to use the customized version.
 
 ```typescript
-// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/easy-barcode-scanner.ui.html' by default
+// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2001/easy-barcode-scanner.ui.html' by default
 EasyBarcodeScanner.scan(ui?: string|HTMLElement);
 // 'https://cdn.jsdelivr.net/npm/dynamsoft-camera-enhancer@4.1.0/dist/dce.mobile-native.ui.html' by default
 EasyBarcodeScanner.createInstance(ui?: string|HTMLElement);
@@ -150,6 +150,6 @@ The license used in this sample is an automatically requested trial license, onl
 The license can be directly configured within the script tag when including the script file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2001/dist/easy-barcode-scanner.js"
 data-license="[YOUR-LICENSE]"></script>
 ```

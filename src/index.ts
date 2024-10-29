@@ -177,7 +177,7 @@ class EasyBarcodeScanner{
   static scan(uiPath: string): Promise<string>;
   static scan(uiElement: HTMLElement): Promise<string>;
   static scan(ui?: string | HTMLElement): Promise<string>;
-  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2000/easy-barcode-scanner.ui.html'){
+  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2001/easy-barcode-scanner.ui.html'){
     return await new Promise(async(rs,rj)=>{
 
       //========================== init ============================
@@ -234,6 +234,7 @@ class EasyBarcodeScanner{
       //========================== success get result ============================
 
       if(0 === barcodeResults.length){
+        scanner.dispose();
         rs(null);
         return;
       }
