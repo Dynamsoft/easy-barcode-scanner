@@ -88,7 +88,7 @@ async scan(){
 
 **Example 2: Setting Up a Scanner**
 
-This example demonstrates how to create a scanner instance and handle barcode readings efficiently:
+This example shows how to create your own barcode scanner, giving you more control over the details:
 
 ```tsx
 import EasyBarcodeScanner from '[your-path]/easy-barcode-reader';
@@ -133,7 +133,7 @@ EasyBarcodeScanner.scan(ui?: string|HTMLElement);
 EasyBarcodeScanner.createInstance(ui?: string|HTMLElement);
 ```
 
-Please refer to [customize the UI of CameraEnhancer](https://www.dynamsoft.com/camera-enhancer/docs/web/programming/javascript/user-guide/index.html#customize-the-ui) for more details.
+You can refer to [customize the UI of CameraEnhancer](https://www.dynamsoft.com/camera-enhancer/docs/web/programming/javascript/user-guide/index.html#customize-the-ui) for more details.
 
 ## All supported barcodes
 
