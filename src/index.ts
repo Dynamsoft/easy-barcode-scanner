@@ -96,6 +96,8 @@ class EasyBarcodeScanner{
       throw ex;
     }
 
+    scanner.minImageCaptureInterval = 100;
+
     return scanner;
   }
 
@@ -177,7 +179,7 @@ class EasyBarcodeScanner{
   static scan(uiPath: string): Promise<string>;
   static scan(uiElement: HTMLElement): Promise<string>;
   static scan(ui?: string | HTMLElement): Promise<string>;
-  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2003/easy-barcode-scanner.ui.html'){
+  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/easy-barcode-scanner.ui.html'){
     return await new Promise(async(rs,rj)=>{
 
       //========================== init ============================
@@ -278,7 +280,6 @@ class EasyBarcodeScanner{
       shadowRoot.append(btnClose);
 
       if('disabled' === scanner._cameraEnhancer.singleFrameMode){ scanner.pause(); }
-      scanner._cameraEnhancer.isTorchOn = false; // workaround `turnAutoTorch` try to turn on torch when camera paused
 
       let txtResult = await pChooseResult;
 

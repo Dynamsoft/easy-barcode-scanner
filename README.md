@@ -12,8 +12,8 @@ The Easy Barcode Scanner is a lightweight, user-friendly wrapper for the Dynamso
 The simplest way to use Easy Barcode Scanner requires only one line code to create a video decoding web application.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.2002/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2003/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.3100/dist/dbr.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   EasyBarcodeScanner.scan().then(txt=>alert(txt)).catch(ex=>alert(ex.message || ex));
@@ -30,8 +30,8 @@ You can also create your own scanner instance to have more control over the enti
 ```html
 <div id="camera-view-container" style="height:90vh"></div>
 <button id="btn-scan">scan</button>
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.2002/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2003/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.3100/dist/dbr.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   let pScanner, scanner;
@@ -46,9 +46,8 @@ You can also create your own scanner instance to have more control over the enti
     }catch(ex){
       // If camera doesn't exist or is occupied, the camera may fail to open.
       // So it's better to use `try-catch`.
-      let errMsg = ex.message || ex;
-      console.error(errMsg);
-      alert(errMsg);
+      console.error(ex);
+      alert(ex.message || ex);
     }
   });
 </script>
@@ -61,7 +60,7 @@ To integrate Easy Barcode Scanner into your framework, follow these steps:
 1. Install the necessary package:
 
 ```sh
-npm i dynamsoft-barcode-reader-bundle@10.4.2002 -E
+npm i dynamsoft-barcode-reader-bundle@10.4.3100 -E
 ```
 
 2. Copy the `src/index.ts` file from the library into your project. Rename it as needed, for example: `[your-path]/easy-barcode-reader.ts.`
@@ -79,9 +78,8 @@ async scan(){
   try{
     alert(await EasyBarcodeScanner.scan());
   }catch(ex){
-    let errMsg = ex.message || ex;
-    console.error(errMsg);
-    alert(errMsg);
+    console.error(ex);
+    alert(ex.message || ex);
   }
 }
 ```
@@ -105,9 +103,8 @@ async mount(){
     scanner.onUniqueRead = (txt) => { console.log(txt); };
     await scanner.open();
   }catch(ex){
-    let errMsg = ex.message || ex;
-    console.error(errMsg);
-    alert(errMsg);
+    console.error(ex);
+    alert(ex.message || ex);
   }
 }
 beforeUnmount(){
@@ -127,7 +124,7 @@ beforeUnmount(){
 The built-in UIs are located in files like `xxx.ui.html`. You can copy `xxx.ui.html` into your project, modify it as needed, and pass its path to the `createInstance` or `scan` API to use the customized version.
 
 ```typescript
-// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2003/easy-barcode-scanner.ui.html' by default
+// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/easy-barcode-scanner.ui.html' by default
 EasyBarcodeScanner.scan(ui?: string|HTMLElement);
 // 'https://cdn.jsdelivr.net/npm/dynamsoft-camera-enhancer@4.1.0/dist/dce.mobile-native.ui.html' by default
 EasyBarcodeScanner.createInstance(ui?: string|HTMLElement);
@@ -150,6 +147,6 @@ The license used in this sample is an automatically requested trial license, onl
 The license can be directly configured within the script tag when including the script file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.2003/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
 data-license="[YOUR-LICENSE]"></script>
 ```
