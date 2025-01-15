@@ -134,7 +134,7 @@ You can refer to [customize the UI of CameraEnhancer](https://www.dynamsoft.com/
 
 ## All supported barcodes
 
-You can use the code snippet from the[Out-of-the-box Scanning](#out-of-the-box-scanning) section to focus the camera on one or more barcodes. If only one barcode is detected, the result will be displayed immediately. If multiple codes are scanned, an additional interactive step allows you to choose the target.
+You can use the code snippet from the [Out-of-the-box Scanning](#out-of-the-box-scanning) section to focus the camera on one or more barcodes. If only one barcode is detected, the result will be displayed immediately. If multiple codes are scanned, an additional interactive step allows you to choose the target.
 
 ![default supported barcode](./default-supported-barcode.png)
 
