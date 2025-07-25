@@ -1,6 +1,6 @@
 {
   "name": "easy-barcode-scanner",
-  "version": "11.0.3001",
+  "version": "11.0.3002",
   "description": "A wrapper for dynamsoft-barcode-reader-javascript. Easier to use.",
   "main": "./dist/easy-barcode-scanner.js",
   "module": "./dist/easy-barcode-scanner.esm.js",
@@ -55,6 +55,6 @@
     "@scannerproxy/dm-camera": "^1.0.6"
   },
   "dependencies": {
-    "dynamsoft-barcode-reader-bundle": "^11.0.3001"
+    "dynamsoft-barcode-reader-bundle": "^11.0.3000"
   }
 }
