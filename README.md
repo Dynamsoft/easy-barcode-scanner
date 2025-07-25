@@ -12,8 +12,8 @@ The Easy Barcode Scanner is a lightweight, user-friendly wrapper for the Dynamso
 The simplest way to use Easy Barcode Scanner requires only one line code to create a video decoding web application.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.3100/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@11.0.3000/dist/dbr.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   EasyBarcodeScanner.scan().then(txt=>alert(txt)).catch(ex=>alert(ex.message || ex));
@@ -30,8 +30,8 @@ You can also create your own scanner instance to have more control over the enti
 ```html
 <div id="camera-view-container" style="height:90vh"></div>
 <button id="btn-scan">scan</button>
-<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@10.4.3100/dist/dbr.bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-barcode-reader-bundle@11.0.3000/dist/dbr.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/dist/easy-barcode-scanner.js"
   data-license=""></script>
 <script>
   let pScanner, scanner;
@@ -60,10 +60,10 @@ To integrate Easy Barcode Scanner into your framework, follow these steps:
 1. Install the necessary package:
 
 ```sh
-npm i dynamsoft-barcode-reader-bundle@10.4.3100 -E
+npm i dynamsoft-barcode-reader-bundle@11.0.3000 -E
 ```
 
-2. Copy the `src/index.ts` file from the library into your project. Rename it as needed, for example: `[your-path]/easy-barcode-reader.ts.`
+2. Copy the `src/index.ts`, `src/dm-camera.*` from the library into your project. Rename `index.ts` as needed, for example: `[your-path]/easy-barcode-reader.ts.`
 
 **Example 1: Simple Out-of-the-box Scan**
 
@@ -121,16 +121,14 @@ beforeUnmount(){
 
 ## Customize the UI
 
-The built-in UIs are located in files like `xxx.ui.html`. You can copy `xxx.ui.html` into your project, modify it as needed, and pass its path to the `createInstance` or `scan` API to use the customized version.
+The built-in UIs are located in files like `xxx.ui.xml`. In fact, it is just HTML, and naming it XML can avoid problems caused by the live server plugin. You can copy `xxx.ui.xml` into your project, modify it as needed, and pass its path to the `createInstance` or `scan` API to use the customized version.
 
 ```typescript
-// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/easy-barcode-scanner.ui.html' by default
+// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/easy-barcode-scanner.ui.xml' by default
 EasyBarcodeScanner.scan(ui?: string|HTMLElement);
-// 'https://cdn.jsdelivr.net/npm/dynamsoft-camera-enhancer@4.1.0/dist/dce.mobile-native.ui.html' by default
+// 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/mobile-native.ui.xml' by default
 EasyBarcodeScanner.createInstance(ui?: string|HTMLElement);
 ```
-
-You can refer to [customize the UI of CameraEnhancer](https://www.dynamsoft.com/camera-enhancer/docs/web/programming/javascript/user-guide/index.html#customize-the-ui) for more details.
 
 ## All supported barcodes
 
@@ -142,11 +140,11 @@ You can use the code snippet from the [Out-of-the-box Scanning](#out-of-the-box-
 
 ## License Information
 
-The license used in this sample is an automatically requested trial license, only valid for 24 hours and applicable to any newly authorized browser. To test the SDK further, you can request a 30-day free trial license via the <a href="https://www.dynamsoft.com/customer/license/trialLicense?ver=10.2.10&utm_source=sampleReadme&product=dbr&package=js" target="_blank">Request a Trial License</a> link.
+The license used in this sample is an automatically requested trial license, only valid for 24 hours and applicable to any newly authorized browser. To test the SDK further, you can request a 30-day free trial license via the <a href="https://www.dynamsoft.com/customer/license/trialLicense?ver=11.0.30&utm_source=sampleReadme&product=dbr&package=js" target="_blank">Request a Trial License</a> link.
 
 The license can be directly configured within the script tag when including the script file.
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@10.4.3100/dist/easy-barcode-scanner.js"
+<script src="https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/dist/easy-barcode-scanner.js"
 data-license="[YOUR-LICENSE]"></script>
 ```

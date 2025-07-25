@@ -4,3 +4,6 @@ node_modules
 .npmrc
 package-lock.json
 index copy.html
+test-speed.html
+index.ts.backup
+eruda.min.js

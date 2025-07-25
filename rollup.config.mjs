@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs, { write } from 'fs';
 import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
@@ -26,12 +26,7 @@ export default async (commandLineArgs)=>{
         typescript({ tsconfig: "./tsconfig.json", sourceMap: hasSourceMap }),
       ],
       external: [
-        "dynamsoft-core",
-        "dynamsoft-license",
-        "dynamsoft-capture-vision-router",
-        "dynamsoft-camera-enhancer",
-        "dynamsoft-barcode-reader",
-        "dynamsoft-utility",
+        "dynamsoft-capture-vision-bundle",
       ],
       output: [
         {
@@ -42,14 +37,39 @@ export default async (commandLineArgs)=>{
           banner: banner,
           sourcemap: hasSourceMap,
           globals: {
-            "dynamsoft-core": "Dynamsoft.Core",
-            "dynamsoft-license": "Dynamsoft.License",
-            "dynamsoft-capture-vision-router": "Dynamsoft.CVR",
-            "dynamsoft-camera-enhancer": "Dynamsoft.DCE",
-            "dynamsoft-barcode-reader": "Dynamsoft.DBR",
-            "dynamsoft-utility": "Dynamsoft.Utility",
+            // "dynamsoft-core": "Dynamsoft.Core",
+            // "dynamsoft-license": "Dynamsoft.License",
+            "dynamsoft-barcode-reader-bundle": "Dynamsoft.DBRBundle",
+            // "dynamsoft-camera-enhancer": "Dynamsoft.DCE",
+            // "dynamsoft-barcode-reader": "Dynamsoft.DBR",
+            // "dynamsoft-utility": "Dynamsoft.Utility",
           },
-          plugins: [terser({ ecma: 5 })],
+          plugins: [
+            terser({ ecma: 5 }),
+            {
+              writeBundle(options, bundle){
+                let umdjs = fs.readFileSync('dist/easy-barcode-scanner.js', 'utf-8');
+                fs.writeFileSync('dist/easy-barcode-scanner.js', `
+Dynamsoft.DBRBundle = new Proxy({}, {
+  get: function (target, name) {
+    for(let _namespace of ['Core','License','CVR','DBR','Utility']){
+      if(name in Dynamsoft[_namespace]){
+        return Dynamsoft[_namespace][name];
+      }
+    }
+  },
+  set: function (target, name, value) {
+    for(let _namespace of ['Core','License','CVR','DBR','Utility']){
+      if(name in Dynamsoft[_namespace]){
+        Dynamsoft[_namespace][name] = value;
+      }
+    }
+  }
+});`
+                  +umdjs, 'utf-8');
+              }
+            }
+          ],
         },
         {
           file: "dist/easy-barcode-scanner.mjs",
