@@ -115,7 +115,7 @@ class EasyBarcodeScanner{
   static createInstance(uiPath: string): Promise<EasyBarcodeScanner>;
   static createInstance(uiElement: HTMLElement): Promise<EasyBarcodeScanner>;
   static createInstance(ui?: string | HTMLElement): Promise<EasyBarcodeScanner>;
-  static async createInstance(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/mobile-native.ui.xml'){
+  static async createInstance(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3001/mobile-native.ui.xml'){
     let scanner = new EasyBarcodeScanner();
     try{
       let cvRouter = scanner._cvRouter = await CaptureVisionRouter.createInstance();
@@ -416,7 +416,7 @@ class EasyBarcodeScanner{
   static scan(uiPath: string): Promise<string>;
   static scan(uiElement: HTMLElement): Promise<string>;
   static scan(ui?: string | HTMLElement): Promise<string>;
-  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3000/easy-barcode-scanner.ui.xml'){
+  static async scan(ui: string | HTMLElement = 'https://cdn.jsdelivr.net/gh/Dynamsoft/easy-barcode-scanner@11.0.3001/easy-barcode-scanner.ui.xml'){
     return await new Promise(async(rs,rj)=>{
 
       //========================== init ============================
