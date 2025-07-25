@@ -6,7 +6,8 @@
   "module": "./dist/easy-barcode-scanner.esm.js",
   "files": [
     "/dist",
-    "/easy-barcode-scanner.ui.html",
+    "/easy-barcode-scanner.ui.xml",
+    "/mobile-native.ui.xml",
     "/LICENSE"
   ],
   "sideEffects": false,
