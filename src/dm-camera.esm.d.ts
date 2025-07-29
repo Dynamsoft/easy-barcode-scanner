@@ -411,6 +411,10 @@ declare class FramePipeline {
     maxTimeout: number;
     _pipeTaskId: any;
     isSaveOriginalRgba: boolean;
+    /**
+     * The `originalRgba` share `ArrayBuffer` with the `data` returned by `getData(..., type: 'rgba')`.
+     * So you should be careful when transferring `data` to other thread.
+     */
     originalRbga: Uint8ClampedArray;
     constructor(camera?: Camera);
     _getDate(): Uint8Array<ArrayBufferLike>;
