@@ -26,7 +26,7 @@ export default async (commandLineArgs)=>{
         typescript({ tsconfig: "./tsconfig.json", sourceMap: hasSourceMap }),
       ],
       external: [
-        "dynamsoft-capture-vision-bundle",
+        "dynamsoft-barcode-reader-bundle",
       ],
       output: [
         {
