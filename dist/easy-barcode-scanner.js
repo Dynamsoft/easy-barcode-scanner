@@ -16,7 +16,7 @@ Dynamsoft.DBRBundle = new Proxy({}, {
   }
 });/*!
 * easy-barcode-scanner
-* @version 11.0.3003 (build 2025-08-13T08:47:21.632Z)
+* @version 11.0.3003 (build 2025-08-14T08:37:43.467Z)
 * A wrapper for https://github.com/Dynamsoft/barcode-reader-javascript. Easier to use.
 * The wrapper is under Unlicense, the Dynamsoft SDK it depended is still protected by copyright.
 */

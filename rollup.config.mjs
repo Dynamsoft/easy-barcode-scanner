@@ -1,4 +1,4 @@
-import fs, { write } from 'fs';
+import fs from 'fs/promises';
 import typescript from "@rollup/plugin-typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
@@ -15,7 +15,7 @@ const banner = `/*!
 * The wrapper is under Unlicense, the Dynamsoft SDK it depended is still protected by copyright.
 */`;
 export default async (commandLineArgs)=>{
-  fs.rmSync('dist', {recursive: true, force: true });
+  await fs.rm('dist', {recursive: true, force: true });
     
   
   return [
@@ -47,9 +47,9 @@ export default async (commandLineArgs)=>{
           plugins: [
             terser({ ecma: 5 }),
             {
-              writeBundle(options, bundle){
-                let umdjs = fs.readFileSync('dist/easy-barcode-scanner.js', 'utf-8');
-                fs.writeFileSync('dist/easy-barcode-scanner.js', `
+              async writeBundle(options, bundle){
+                let umdjs = await fs.readFile('dist/easy-barcode-scanner.js', 'utf-8');
+                await fs.writeFile('dist/easy-barcode-scanner.js', `
 Dynamsoft.DBRBundle = new Proxy({}, {
   get: function (target, name) {
     for(let _namespace of ['Core','License','CVR','DBR','Utility']){
@@ -81,8 +81,8 @@ Dynamsoft.DBRBundle = new Proxy({}, {
             terser({ ecma: 6 }),
             {
               // https://rollupjs.org/guide/en/#writebundle
-              writeBundle(options, bundle){
-                fs.cpSync('dist/easy-barcode-scanner.mjs','dist/easy-barcode-scanner.esm.js');
+              async writeBundle(options, bundle){
+                await fs.cp('dist/easy-barcode-scanner.mjs','dist/easy-barcode-scanner.esm.js');
               }
             },
           ],
